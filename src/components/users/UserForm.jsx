@@ -20,8 +20,10 @@ export default function UserForm({
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       e.email = "Enter a valid email";
     if (!form.phone.trim()) e.phone = "Phone is required";
-    else if (!/^[0-9]{10}$/.test(form.phone))
-      e.phone = "Enter a valid 10-digit phone number";
+   else if (!/^\+?[1-9]\d{9,14}$/.test(form.phone)) {
+  e.phone = "Enter a valid phone number";
+}
+
     return e;
   };
 
@@ -43,7 +45,7 @@ export default function UserForm({
   {/* Name */}
   <div>
     <label className="block mb-2 text-sm font-medium text-gray-700">Name</label>
-    
+
     <input
       type="text"
       name="name"
